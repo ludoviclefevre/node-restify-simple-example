@@ -6,7 +6,6 @@ node-restify-simple-example
 ```sh
 $ git clone https://github.com/ludoviclefevre/node-restify-simple-example.github
 $ npm install
-$ node app
 ```
 
 ## Start
