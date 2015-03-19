@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Node.js Restify simple example</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
 
@@ -9,5 +10,59 @@
     Static webpage served with Restify
 </h1>
 
+<h2>GET http://localhost:4444/test</h2>
+Response: <span id="getResponse"></span>
+<br/>
+
+<h2>GET http://localhost:4444/test/10</h2>
+Response: <span id="getWithParamResponse"></span>
+<br/>
+
+<h2>POST http://localhost:4444/test</h2>
+Response: <span id="postResponse"></span>
+
+<script type="text/javascript">
+    $(function () {
+        var postRequest = function (url, element) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: "application/json",
+                data: JSON.stringify({
+                    label: "15"
+                }),
+                dataType: "json",
+                success: function (response, status, xhr) {
+                    element.text(JSON.stringify(response));
+                },
+                error: function (error) {
+                    element.text(JSON.stringify(error));
+                }
+            });
+        };
+
+        var getRequest = function (url, element) {
+            $.ajax({
+                type: "GET",
+                url: url,
+                contentType: "application/json",
+                success: function (response, status, xhr) {
+                    element.text(JSON.stringify(response));
+                },
+                error: function (error) {
+                    element.text(JSON.stringify(error));
+                }
+            });
+        };
+
+        var url = "http://localhost:4444/test",
+                urlWithParam = url + '/10';
+
+        getRequest(url, $("#getResponse"));
+        getRequest(urlWithParam, $("#getWithParamResponse"));
+        postRequest(url, $("#postResponse"));
+    });
+
+</script>
 </body>
 </html> 
