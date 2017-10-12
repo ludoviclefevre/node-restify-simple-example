@@ -4,7 +4,7 @@ node-restify-simple-example
 ## Install
 
 ```sh
-$ git clone https://github.com/ludoviclefevre/node-restify-simple-example.github
+$ git clone https://github.com/ludoviclefevre/node-restify-simple-example.git
 $ npm install
 ```
 
